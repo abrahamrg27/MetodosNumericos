@@ -2,8 +2,8 @@ package mx.edu.itses.earg.MetodosNumericos.web;
 
 import lombok.extern.slf4j.Slf4j;
 import mx.edu.itses.earg.MetodosNumericos.domain.Biseccion;
+import mx.edu.itses.earg.MetodosNumericos.domain.PuntoFijo;
 import mx.edu.itses.earg.MetodosNumericos.domain.ReglaFalsa;
-import mx.edu.itses.earg.MetodosNumericos.services.Funciones;
 import mx.edu.itses.earg.MetodosNumericos.services.UnidadIIservices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,8 @@ public class Unit2Controller {
     private UnidadIIservices bisectionservice;
      @Autowired
     private UnidadIIservices reglafalsaService;
-
+     @Autowired
+private UnidadIIservices puntofijoService;
     @GetMapping("unit2/formBisection")
     public String formBisection(Model model) {
         Biseccion bisection = new Biseccion();
@@ -52,5 +53,19 @@ public String solveReglaFalsa(ReglaFalsa reglafalsa, Model model) {
     model.addAttribute("solveReglaFalsa", solveReglaFalsa);
     return "unit2/reglafalsa/solveReglaFalsa";
 }
+ @Autowired
+    
+   @GetMapping("unit2/formPuntoFijo")
+    public String formPuntoFijo(Model model) {
+        PuntoFijo puntoFijo = new PuntoFijo();  
+        model.addAttribute("puntoFijo", puntoFijo);  // atributo para el formulario
+        return "unit2/puntofijo/formPuntoFijo";     // nombre plantilla Thymeleaf
+    }
 
+    @PostMapping("unit2/solvePuntoFijo")
+    public String solvePuntoFijo(@ModelAttribute PuntoFijo puntoFijo, Model model) {
+        var solvePuntoFijo = puntofijoService.AlgoritmoPuntoFijo(puntoFijo);
+        model.addAttribute("solvePuntoFijo", solvePuntoFijo); // resultados para la tabla
+        return "unit2/puntofijo/solvePuntoFijo";             // plantilla resultados
+    }
 }

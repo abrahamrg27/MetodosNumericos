@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+  <title>Método de Punto Fijo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img th:src="@{/images/images/logo.itses.png}" width="125" height="38" alt="Logo" />
+      MÉTODOS NUMÉRICOS
+    </a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h1>Método de Punto Fijo</h1>
+  <form method="post" th:object="${PuntoFijo}" th:action="@{/unit2/solvePuntoFijo}">
+    <div class="mb-3">
+      <label for="FX" class="form-label">Función g(x)</label>
+      <input type="text" id="FX" placeholder="g(x)" class="form-control" th:field="*{FX}" />
+    </div>
+    <div class="mb-3">
+      <label for="Xi" class="form-label">Valor inicial (Xi)</label>
+      <input type="text" id="Xi" placeholder="Valor inicial" class="form-control" th:field="*{xi}" />
+    </div>
+    <div class="mb-3">
+      <label for="Ea" class="form-label">Error estimado (%)</label>
+      <input type="text" id="Ea" placeholder="Error permitido" class="form-control" th:field="*{ea}" />
+    </div>
+    <div class="mb-3">
+      <label for="IteracionesMaximas" class="form-label">Iteraciones máximas</label>
+      <input type="text" id="IteracionesMaximas" placeholder="Iteraciones" class="form-control" th:field="*{iteracionesMaximas}" />
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular</button>
+    <button type="reset" class="btn btn-secondary">Limpiar</button>
+  </form>
+</div>
+
+</body>
+</html>
