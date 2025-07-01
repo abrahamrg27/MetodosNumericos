@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymleaf.org">
+    <head>
+        <title>METODOS NUMERICOS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity=""
+            crossorigin="anonymous"
+            >
+        <!-- Bootstrap JS and dependencies -->
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+            integrity="" 
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img th:src="@{/folder/logo.itses.png}"
+                         width="125" height="38"
+                         class="d-inline-block align-top">
+                    METODOS NUMERICOS
+                </a> 
+            </div>
+        </nav>
+
+        <div class="container"  th:object="${puntofijo}" th:action="@{/unit2/Tabla}">
+            <div class="row">
+                <img class="img-fluid w-100" th:src="@{/folder/metodosnumericos.png}"/>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+         <th>Iteración</th>
+          <th>#</th>
+                        <th>Xi</th>
+                        <th>f(Xi)</th>
+                        <th>f'(Xi)</th>
+                        <th>Xi+1</th>
+                        <th>Ea (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  th:each="solve,iter:${solveNewtonRaphson}">
+                    <td th:text="${iter.index}"> # de Iteracion</td>
+                    <td th:text="${solve.Xi}">Valor  Xi</td>
+                    <td th:text="${solve.FXi}"> Valor FXi</td>
+                                        <td th:text="${solve.FXii}">Valor  FXii</td>
+                    <td th:text="${solve.Xii}"> Valor Xii</td>
+                  
+                    <td th:text="${solve.Ea}"> Error estimado actual</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

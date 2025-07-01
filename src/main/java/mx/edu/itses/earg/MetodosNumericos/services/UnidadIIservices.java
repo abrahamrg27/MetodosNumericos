@@ -2,6 +2,7 @@ package mx.edu.itses.earg.MetodosNumericos.services;
 
 import java.util.ArrayList;
 import mx.edu.itses.earg.MetodosNumericos.domain.Biseccion;
+import mx.edu.itses.earg.MetodosNumericos.domain.NewtonRaphson;
 import mx.edu.itses.earg.MetodosNumericos.domain.PuntoFijo;
 import mx.edu.itses.earg.MetodosNumericos.domain.ReglaFalsa;
 
@@ -12,5 +13,5 @@ public interface UnidadIIservices {
    
     public ArrayList<PuntoFijo> AlgoritmoPuntoFijo(PuntoFijo puntofijo);
 
-  
+    public ArrayList<NewtonRaphson>AlgoritmoNewtonRaphson(NewtonRaphson newtonRaphson);
 }
