@@ -1,9 +1,9 @@
-package mx.edu.itses.earg.MetodosNumericos;
+package mx.edu.itses.earg.metodosnumerico;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = mx.edu.itses.earg.metodosnumerico.MetodosNumericosApplication.class)
 class MetodosNumericosApplicationTests {
 
 	@Test

@@ -6,6 +6,8 @@ import mx.edu.itses.earg.metodosnumerico.domain.Biseccion;
 import mx.edu.itses.earg.metodosnumerico.domain.NewtonRaphson;
 import mx.edu.itses.earg.metodosnumerico.domain.PuntoFijo;
 import mx.edu.itses.earg.metodosnumerico.domain.ReglaFalsa;
+import mx.edu.itses.earg.metodosnumerico.domain.Secante;
+import mx.edu.itses.earg.metodosnumerico.domain.SecanteModificada;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -199,5 +201,79 @@ public class UnidadIIServiceImpl implements UnidadIIservices {
     }
     
     return respuestaNewtonRaphson;
+}  
+    @Override
+    public ArrayList<Secante> AlgoritmoSecante(Secante secante) {
+    ArrayList<Secante> resultados = new ArrayList<>();
+    
+    String funcionCorregida = secante.getFX().replace('–', '-').replace("−", "-");
+    
+    double xi = secante.getXi();
+    double xi1 = secante.getXiMenos1();
+    double ea = secante.getEa();
+    int max = secante.getIteracionesMaximas();
+
+    for (int i = 0; i < max; i++) {
+        double fxi = Funciones.Ecuacion(funcionCorregida, xi);
+        double fxi1 = Funciones.Ecuacion(funcionCorregida, xi1);
+
+        if ((fxi1 - fxi) == 0) break;
+
+        double xii = xi - (fxi * (xi1 - xi)) / (fxi1 - fxi);
+        double error = Math.abs((xii - xi) / xii) * 100;
+
+        Secante paso = new Secante();
+        paso.setXi(xi);
+        paso.setXiMenos1(xi1);
+        paso.setFXi(fxi);
+        paso.setFXiMenos1(fxi1);
+        paso.setXii(xii);
+        paso.setError(error);
+
+        resultados.add(paso);
+
+        if (error < ea) break;
+
+        xi1 = xi;
+        xi = xii;
+    }
+
+    return resultados;
+}
+ @Override
+    public ArrayList<SecanteModificada> AlgoritmoSecanteModificada(SecanteModificada secantemodificada) {
+    ArrayList<SecanteModificada> resultado = new ArrayList<>();
+    double xi = secantemodificada.getXi();
+    double h = secantemodificada.getH();
+    double ea = secantemodificada.getEa();
+    int max = secantemodificada.getIteracionesMaximas();
+
+    double xAnt = 0;
+    double error = 100;
+
+    for (int i = 1; i <= max; i++) {
+        double fxi = Funciones.Ecuacion(secantemodificada.getFx(), xi);
+        double dfxi = (Funciones.Ecuacion(secantemodificada.getFx(), xi + h) - fxi) / h;
+
+        if (Math.abs(dfxi) < 1e-12) break;
+
+        double xii = xi - (fxi / dfxi);
+        if (i > 1) error = Funciones.ErrorRelativo(xii, xAnt);
+
+        SecanteModificada paso = new SecanteModificada();
+        paso.setIteracion(i);
+        paso.setXi(xi);
+        paso.setFxi(fxi);
+        paso.setDfxi(dfxi);
+        paso.setXii(xii);
+        paso.setError(i == 1 ? 0 : error);
+        resultado.add(paso);
+
+        if (error < ea) break;
+
+        xAnt = xii;
+        xi = xii;
+    }
+    return resultado;
 }
 }

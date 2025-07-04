@@ -1,11 +1,14 @@
 package mx.edu.itses.earg.metodosnumerico.web;
 
+import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
 import mx.edu.itses.earg.metodosnumerico.services.UnidadIIservices;
 import mx.edu.itses.earg.metodosnumerico.domain.Biseccion;
 import mx.edu.itses.earg.metodosnumerico.domain.NewtonRaphson;
 import mx.edu.itses.earg.metodosnumerico.domain.PuntoFijo;
 import mx.edu.itses.earg.metodosnumerico.domain.ReglaFalsa;
+import mx.edu.itses.earg.metodosnumerico.domain.Secante;
+import mx.edu.itses.earg.metodosnumerico.domain.SecanteModificada;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,4 +80,28 @@ public String formNewtonRaphson(Model model) {
         model.addAttribute("solveNewtonRaphson", solveNewtonRaphson);
         return "unit2/newtonraphson/solveNewtonRaphson";
     }
+    @GetMapping("unit2/formSecante")
+public String formSecante(Model model) {
+    model.addAttribute("secante", new Secante());
+    return "unit2/secante/formSecante";
+}
+
+@PostMapping("unit2/solveSecante")
+public String solveSecante(Secante secante, Model model) {
+    var solveSecante = bisectionservice.AlgoritmoSecante(secante);
+    model.addAttribute("solveSecante", solveSecante);
+    return "unit2/secante/solveSecante";
+}
+@GetMapping("/unit2/secantemodificada")
+public String formSecanteModificada(Model model) {
+    model.addAttribute("secantemodificada", new SecanteModificada());
+    return "unit2/secantemodificada/formSecanteModificada";
+}
+
+@PostMapping("/unit2/secantemodificada")
+public String solveSecanteModificada(@ModelAttribute SecanteModificada secanteModificada, Model model) {
+    ArrayList<SecanteModificada> resultado = bisectionservice.AlgoritmoSecanteModificada(secanteModificada);
+    model.addAttribute("resultado", resultado);
+    return "unit2/secantemodificada/formSecanteModificada";
+}
 }
