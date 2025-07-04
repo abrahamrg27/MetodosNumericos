@@ -1,10 +1,10 @@
-package mx.edu.itses.earg.MetodosNumericos.domain;
+package mx.edu.itses.earg.metodosnumerico.domain;
 
 import lombok.Data;
 
 @Data   
 public class PuntoFijo {
-    private String FX;         // Función g(x) como cadena
+    private String Fx;         // Función g(x) como cadena
     private double Xi;         // Valor actual de xi
     private double GXi;        // Valor de g(xi)
     private double Ea;         // Error aproximado relativo

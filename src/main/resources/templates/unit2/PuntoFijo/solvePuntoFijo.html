@@ -32,9 +32,9 @@
     <tbody>
       <tr th:each="punto, iter : ${solvePuntoFijo}">
         <td th:text="${iter.index + 1}">1</td>
-        <td th:text="${punto.xi}">0.5</td>
-        <td th:text="${punto.gxi}">g(xi)</td>
-        <td th:text="${punto.ea}">Error</td>
+        <td th:text="${punto.Xi}">0.5</td>
+        <td th:text="${punto.GXi}">g(xi)</td>
+        <td th:text="${punto.Ea}">Error</td>
       </tr>
     </tbody>
   </table>

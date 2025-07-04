@@ -1,4 +1,4 @@
-package mx.edu.itses.earg.MetodosNumericos.domain;
+package mx.edu.itses.earg.metodosnumerico.domain;
 
 import lombok.Data;
 

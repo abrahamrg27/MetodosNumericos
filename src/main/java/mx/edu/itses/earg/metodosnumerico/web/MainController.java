@@ -1,7 +1,7 @@
-package mx.edu.itses.earg.MetodosNumericos.web;
+package mx.edu.itses.earg.metodosnumerico.web;
 
 import lombok.extern.slf4j.Slf4j;
-import mx.edu.itses.earg.MetodosNumericos.domain.Biseccion;
+import mx.edu.itses.earg.metodosnumerico.domain.Biseccion;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package mx.edu.itses.earg.MetodosNumericos.services;
+package mx.edu.itses.earg.metodosnumerico.services;
 
 import static java.lang.Math.abs;
 import org.mariuszgromada.math.mxparser.*;

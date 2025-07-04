@@ -1,10 +1,10 @@
-package mx.edu.itses.earg.MetodosNumericos.services;
+package mx.edu.itses.earg.metodosnumerico.services;
 
 import java.util.ArrayList;
-import mx.edu.itses.earg.MetodosNumericos.domain.Biseccion;
-import mx.edu.itses.earg.MetodosNumericos.domain.NewtonRaphson;
-import mx.edu.itses.earg.MetodosNumericos.domain.PuntoFijo;
-import mx.edu.itses.earg.MetodosNumericos.domain.ReglaFalsa;
+import mx.edu.itses.earg.metodosnumerico.domain.Biseccion;
+import mx.edu.itses.earg.metodosnumerico.domain.NewtonRaphson;
+import mx.edu.itses.earg.metodosnumerico.domain.PuntoFijo;
+import mx.edu.itses.earg.metodosnumerico.domain.ReglaFalsa;
 
 public interface UnidadIIservices {
     public ArrayList<Biseccion> AlgoritmoBiseccion(Biseccion biseccion);

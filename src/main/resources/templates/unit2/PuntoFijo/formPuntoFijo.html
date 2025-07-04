@@ -22,16 +22,16 @@
   <h1>Método de Punto Fijo</h1>
   <form method="post" th:object="${PuntoFijo}" th:action="@{/unit2/solvePuntoFijo}">
     <div class="mb-3">
-      <label for="FX" class="form-label">Función g(x)</label>
-      <input type="text" id="FX" placeholder="g(x)" class="form-control" th:field="*{FX}" />
+      <label for="Fx" class="form-label">Función g(x)</label>
+      <input type="text" id="Fx" placeholder="g(x)" class="form-control" th:field="*{Fx}" />
     </div>
     <div class="mb-3">
       <label for="Xi" class="form-label">Valor inicial (Xi)</label>
-      <input type="text" id="Xi" placeholder="Valor inicial" class="form-control" th:field="*{xi}" />
+      <input type="text" id="Xi" placeholder="Valor inicial" class="form-control" th:field="*{Xi}" />
     </div>
     <div class="mb-3">
       <label for="Ea" class="form-label">Error estimado (%)</label>
-      <input type="text" id="Ea" placeholder="Error permitido" class="form-control" th:field="*{ea}" />
+      <input type="text" id="Ea" placeholder="Error permitido" class="form-control" th:field="*{Ea}" />
     </div>
     <div class="mb-3">
       <label for="IteracionesMaximas" class="form-label">Iteraciones máximas</label>

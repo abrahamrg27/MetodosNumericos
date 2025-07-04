@@ -1,4 +1,4 @@
-package mx.edu.itses.earg.MetodosNumericos;
+package mx.edu.itses.earg.metodosnumerico;
 
 import org.mariuszgromada.math.mxparser.License;
 import org.mariuszgromada.math.mxparser.mXparser;
