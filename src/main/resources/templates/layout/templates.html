@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th"http://www.thymleaf.org">
+      <html>
+        <head>
+            <title>LAYOUT  METODOS NUMERICOS</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary"th:fragment="menu">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <img th:src="@{/folder/logo.itses.png}"
+                             whidth="125"height="38"
+                             class="d-inline-block align-top">
+                        METODOS NUMERICOS
+                    </a> 
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/"> Inicio </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/unit2"> Solucion Ecuaciones </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="/unit3"> Sistemas Lineales </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="/unit4"> Ajuste De Curvas </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="/unit5"> Diferencia  e Integracion </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="/unit6"> Ecuaciones Diferenciales </a>
+                            </li>
+                            
+                                <li class="nav-item">
+                                <a class="nav-link disabled" href="/unit7"> Regla Cramer </a>
+                            </li>
+                              <li class="nav-item">
+                                <a class="nav-link disabled" href="/unit8"> Eliminacion Gauss </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+            <div class="container" th:fragment="bannerunit2">
+                <div class="row">
+                    <img class="img-fluis w-100" th:src="@{/folder/metodosnumericos.png}"/>
+                </div>
+            </div>
+            <div class="container" th:fragment="bannerunit3">
+                <div class="row">
+                    <img class="img-fluis w-100" th:src="@{/folder/metodosnumericos.png}"/>
+                </div>
+            </div>
+        </body>
+    </html>
