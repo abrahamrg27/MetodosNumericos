@@ -3,6 +3,7 @@ package mx.edu.itses.earg.metodosnumerico.services;
 import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
 import mx.edu.itses.earg.metodosnumerico.domain.Gauss;
+import mx.edu.itses.earg.metodosnumerico.domain.GaussJordan;
 import mx.edu.itses.earg.metodosnumerico.domain.ReglaCramer;
 import org.springframework.stereotype.Service;
 
@@ -160,6 +161,41 @@ public Gauss AlgoritmoGauss(Gauss modelGauss) {
     modelGauss.setSolucion(solucionList);
     
     return modelGauss;
+}
+public GaussJordan AlgoritmoGaussJordan(GaussJordan gaussJordan) {
+    int n = gaussJordan.getN();
+    double[][] A = new double[n][n+1];
+
+    int idx = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            A[i][j] = gaussJordan.getMatrizA().get(idx++);
+        }
+        A[i][n] = gaussJordan.getVectorB().get(i);
+    }
+
+    for (int i = 0; i < n; i++) {
+        double pivote = A[i][i];
+        for (int j = 0; j <= n; j++) {
+            A[i][j] /= pivote;
+        }
+        for (int k = 0; k < n; k++) {
+            if (k != i) {
+                double factor = A[k][i];
+                for (int j = 0; j <= n; j++) {
+                    A[k][j] -= factor * A[i][j];
+                }
+            }
+        }
+    }
+
+    ArrayList<Double> solucion = new ArrayList<>();
+    for (int i = 0; i < n; i++) {
+        solucion.add(A[i][n]);
+    }
+
+    gaussJordan.setSolucion(solucion);
+    return gaussJordan;
 }
 
 }

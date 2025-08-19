@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import mx.edu.itses.earg.metodosnumerico.domain.Gauss;
+import mx.edu.itses.earg.metodosnumerico.domain.GaussJordan;
 import mx.edu.itses.earg.metodosnumerico.domain.ReglaCramer;
 import mx.edu.itses.earg.metodosnumerico.services.UnidadIIIService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,27 @@ public String resultadoGauss(@RequestParam int n,
     model.addAttribute("gauss", gauss);
     
     return "unit3/gauss/resultado";
+}
+@GetMapping("/unidad3/gaussjordan")
+public String formGaussJordan(Model model) {
+    model.addAttribute("gaussJordan", new GaussJordan());
+    return "unit3/gaussjordan/formulario";
+}
+
+@PostMapping("/unidad3/gaussjordan/resultado")
+public String resultadoGaussJordan(@RequestParam int n,
+                                   @RequestParam("matrizA") List<Double> matrizA,
+                                   @RequestParam("vectorB") List<Double> vectorB,
+                                   Model model) {
+    GaussJordan gaussJordan = new GaussJordan();
+    gaussJordan.setN(n);
+    gaussJordan.setMatrizA(new ArrayList<>(matrizA));
+    gaussJordan.setVectorB(new ArrayList<>(vectorB));
+
+    gaussJordan = unidadIIIsrv.AlgoritmoGaussJordan(gaussJordan);
+    model.addAttribute("gaussJordan", gaussJordan);
+
+    return "unit3/gaussjordan/resultado";
 }
 
 }
