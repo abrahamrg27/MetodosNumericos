@@ -1,63 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymleaf.org">
-    <head>
-        <title>Metodos numericos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity=""
-            crossorigin="anonymous"
-            >
-        <!-- Bootstrap JS and dependencies -->
-        <script 
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="" 
-            crossorigin="anonymous"
-        ></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-boody-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">
-                    <img th:src ="@{/images/images/logo.itses.png}"
-                         whidth="125" height="38"
-                         class="d-line-block-alight-top">
-                    MÉTODOS NUMERICOS
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <h1>Bienvenidos a la pagina de metodos numericos</h1>
-                    <p>aqui podras encontrar los ejercicios de metodos numericos</p><br>
-                    
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Métodos Numéricos - Unidad II</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">Unidad II - Métodos Numéricos</h1>
+            <p class="text-muted">Selecciona el método que deseas utilizar</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Bisección -->
+            <div class="col-md-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Bisección</h5>
+                        <p class="card-text">Encuentra raíces dividiendo intervalos.</p>
+                        <a th:href="@{/unit2/formBisection}" class="btn btn-primary">Ir al método</a>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <div class ="container">
-            <div class="row">
+
+            <!-- Regla Falsa -->
+            <div class="col-md-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Regla Falsa</h5>
+                        <p class="card-text">Aproxima raíces con interpolación lineal.</p>
+                        <a th:href="@{/unit2/formReglaFalsa}" class="btn btn-primary">Ir al método</a>
+                    </div>
+                </div>
             </div>
-            <img class="img-fluid w-100" th:src="@{/images/images/metodosnumericos.png}"/>
+
+            <!-- Punto Fijo -->
+            <div class="col-md-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Punto Fijo</h5>
+                        <p class="card-text">Transforma ecuaciones en funciones iterativas.</p>
+                        <a th:href="@{/unit2/formPuntoFijo}" class="btn btn-primary">Ir al método</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newton-Raphson -->
+            <div class="col-md-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Newton-Raphson</h5>
+                        <p class="card-text">Usa derivadas para encontrar raíces.</p>
+                        <a th:href="@{/unit2/newtonraphson}" class="btn btn-primary">Ir al método</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secante -->
+            <div class="col-md-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Secante</h5>
+                        <p class="card-text">Calcula aproximaciones con una recta secante.</p>
+                        <a th:href="@{/unit2/formSecante}" class="btn btn-primary">Ir al método</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secante Modificada -->
+            <div class="col-md-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Secante Modificada</h5>
+                        <p class="card-text">Versión optimizada del método de la secante.</p>
+                        <a th:href="@{/unit2/secantemodificada}" class="btn btn-primary">Ir al método</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container">
-            <h1 class="text">solucion de ecuaciones algebraicas</h1>
-            <<h3 class="text">metodos numericos</h3>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/unit2/formBisection}">Bisección</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/unit2/formReglaFalsa">Regla Falsa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/unit2/formPuntoFijo">Punto Fijo</a>
-                               </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/unit2/NewtonRaphson">Newton Raphson</a>
-                               </li>
-            </ul>
-        </div>
-    </body>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

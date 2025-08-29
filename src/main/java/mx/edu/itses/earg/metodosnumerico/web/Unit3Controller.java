@@ -24,7 +24,7 @@ public class Unit3Controller {
     
     @GetMapping("/unit3")
     public String index(Model model) {
-        return "unit3/index";
+        return "unit3/index/index_u3";
     }
     
     @GetMapping("/unit3/formcramer")
@@ -66,26 +66,29 @@ public String resultadoGauss(@RequestParam int n,
     
     return "unit3/gauss/resultado";
 }
-@GetMapping("/unidad3/gaussjordan")
-public String formGaussJordan(Model model) {
-    model.addAttribute("gaussJordan", new GaussJordan());
-    return "unit3/gaussjordan/formulario";
+@Controller
+public class GaussJordanController {
+
+    @GetMapping("/unit3/formGaussJordan") 
+    public String formGaussJordan(Model model){
+    gaussjordan modelgaussjordan = new gaussjordan():
+    model.addAttribute("modelgausjordan", modelgaussjordan)
+        
+    }
+
+   /* @PostMapping("/unit3/gaussjordan/formGaussJordan")
+    public String resultadoGaussJordan(@RequestParam int n,
+                                       @RequestParam("matrizA") List<Double> matrizA,
+                                       @RequestParam("vectorB") List<Double> vectorB,
+                                       Model model) {
+        GaussJordan gaussJordan = new GaussJordan();
+        gaussJordan.setN(n);
+        gaussJordan.setMatrizA(new ArrayList<>(matrizA));
+        gaussJordan.setVectorB(new ArrayList<>(vectorB));
+
+        gaussJordan = unidadIIIsrv.AlgoritmoGaussJordan(gaussJordan);
+        model.addAttribute("gaussjordan", gaussJordan);
+        return "unit3/gaussjordan/formgaussjordan";
+    }*/
 }
-
-@PostMapping("/unidad3/gaussjordan/resultado")
-public String resultadoGaussJordan(@RequestParam int n,
-                                   @RequestParam("matrizA") List<Double> matrizA,
-                                   @RequestParam("vectorB") List<Double> vectorB,
-                                   Model model) {
-    GaussJordan gaussJordan = new GaussJordan();
-    gaussJordan.setN(n);
-    gaussJordan.setMatrizA(new ArrayList<>(matrizA));
-    gaussJordan.setVectorB(new ArrayList<>(vectorB));
-
-    gaussJordan = unidadIIIsrv.AlgoritmoGaussJordan(gaussJordan);
-    model.addAttribute("gaussJordan", gaussJordan);
-
-    return "unit3/gaussjordan/resultado";
-}
-
 }

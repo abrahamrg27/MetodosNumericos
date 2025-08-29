@@ -162,7 +162,8 @@ public Gauss AlgoritmoGauss(Gauss modelGauss) {
     
     return modelGauss;
 }
-public GaussJordan AlgoritmoGaussJordan(GaussJordan gaussJordan) {
+    @Override
+    public GaussJordan AlgoritmoGaussJordan(GaussJordan gaussJordan) {
     int n = gaussJordan.getN();
     double[][] A = new double[n][n+1];
 
